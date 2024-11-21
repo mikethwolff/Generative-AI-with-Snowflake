@@ -4,11 +4,14 @@ import streamlit as st
 import ast
 session = get_active_session()
 
-prompt = """Please write an email or text promoting a new plan that will save customers total costs. 
-Also resolve the customer issue based on the ticket category. 
-If the contact_preference is text message, write text message response in less than 25 words. 
-If the contact_preference is email, write email response in maximum 100 words.
-Write only email or text message response based on the contact_preference for every customer.
+prompt = """You are a customer support representative at a telecommunications company. 
+Suddenly there is a spike in customer support tickets. 
+You need to understand and analyze the support requests from customers.
+Based on the root cause of the main issue in the support request, craft a response to resolve the customer issue.
+The response should be a text message under 25 words, if the contact prefernce of the customer is text message.
+The response should be an email in maximum of 100 words if the contact preference is email. 
+Focus on alleviating the customer issue and improving customer satisfaction in your response.
+Strictly follow the word count limit for the response.
 """
 
 ticket_categories = ['Roaming fees', 'Slow data speed', 'Lost phone', 'Add new line', 'Closing account']
@@ -17,7 +20,7 @@ st.subheader("Auto-generate custom emails or text messages")
 
 with st.container():
     with st.expander("Enter customer request and select LLM", expanded=True):
-        customer_request = st.text_area('Request',"""Dear customer service, I am requesting the closure of my account linked to this email effective June 2024. I have been satisfied with the service but will no longer need it. Please confirm receipt and let me know if there are any additional steps I need to take. Thank you for your attention.""")
+        customer_request = st.text_area('Request',"""I traveled to Japan for two weeks and kept my data usage to a minimum. However, I was charged $90 in international fees. These charges were not communicated to me, and I request a detailed breakdown and a refund. Thank you for your prompt assistance.""")
     
         with st.container():
             left_col, right_col = st.columns(2)
