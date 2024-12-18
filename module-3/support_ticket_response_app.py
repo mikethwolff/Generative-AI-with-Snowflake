@@ -8,10 +8,12 @@ prompt = """You are a customer support representative at a telecommunications co
 Suddenly there is a spike in customer support tickets. 
 You need to understand and analyze the support requests from customers.
 Based on the root cause of the main issue in the support request, craft a response to resolve the customer issue.
-The response should be a text message under 25 words, if the contact prefernce of the customer is text message.
-The response should be an email in maximum of 100 words if the contact preference is email. 
+Write a text message under 25 words, if the contact_preference field is text message.
+Write an email in maximum of 100 words if the contact_preference field is email. 
 Focus on alleviating the customer issue and improving customer satisfaction in your response.
-Strictly follow the word count limit for the response.
+Strictly follow the word count limit for the response. 
+Write only email or text message response based on the contact_preference for every customer. 
+Do not generate both email and text message response.
 """
 
 ticket_categories = ['Roaming fees', 'Slow data speed', 'Lost phone', 'Add new line', 'Closing account']
